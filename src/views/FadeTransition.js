@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-import Animated, { Easing } from 'react-native-reanimated'
+import { Animated, Easing } from 'react-native'
 
-const { Value, timing, interpolate } = Animated
+const { Value, timing } = Animated
 
 export default class FadeTransition extends React.Component {
   static navigationOptions = {
@@ -14,7 +14,7 @@ export default class FadeTransition extends React.Component {
       new Promise(resolve => {
         timing(transition.progress, {
           toValue: 1,
-          duration: 1000,
+          duration: 350,
           easing: Easing.inOut(Easing.cubic),
         }).start(resolve)
       }),
@@ -39,7 +39,7 @@ export default class FadeTransition extends React.Component {
 
       const toOpacity = toState.routes[toState.index].key === myKey ? 1 : 0
 
-      opacity = interpolate(progress, {
+      opacity = progress.interpolate({
         inputRange: [0, 1],
         outputRange: [fromOpacity, toOpacity],
       })

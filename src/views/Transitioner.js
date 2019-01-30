@@ -1,6 +1,5 @@
 import React from 'react'
-import { StyleSheet } from 'react-native'
-import Animated from 'react-native-reanimated'
+import { Animated, StyleSheet } from 'react-native'
 import { StackActions, NavigationProvider } from 'react-navigation'
 
 const getKey = navState => navState.routes[navState.index].key
@@ -249,7 +248,7 @@ export default class Transitioner extends React.Component {
       )
     ]
 
-    if(OutgoingScreen) {
+    if(OutgoingScreen && OutgoingScreen !== IncomingScreen) {
       const outgoingWithProps = (
         <OutgoingScreen
           {...outgoingProps}
